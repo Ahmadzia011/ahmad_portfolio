@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <section
       id="contact-section"
-      className="relative overflow-hidden min-h-[22vh] md:min-h-0 md:h-[55vh] bg-[#101010] w-full text-[#F2EFEB] flex flex-col justify-between pt-12 md:pt-0"
+      className="relative overflow-hidden min-h-[25vh] md:min-h-0 md:h-[55vh] bg-[#101010] w-full text-[#F2EFEB] flex flex-col justify-between pt-12 md:pt-0"
     >
       <div className="w-[88vw] md:w-[60vw] h-full mx-auto flex flex-col justify-between">
         

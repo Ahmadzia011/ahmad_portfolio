@@ -16,7 +16,18 @@ export default function ContactSection() {
     e.preventDefault();
     // Add your form submission logic here
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    // setFormData({
+      //   name : '',
+      //   email: '',
+      //   message: ''
+      // })
+      const form = formData
+      form.name = ''
+      form.email = ''
+      form.message = ''
+      setFormData(form)
+
+    // setTimeout(() => setSubmitted(false), 4000);
   };
 
   return (
@@ -80,7 +91,7 @@ export default function ContactSection() {
             </div>
 
             {/* Social Links Bar */}
-            <div className="bg-[#17181A] border border-[#2A2B2E] rounded-2xl p-6 flex items-center justify-between">
+            <div className="bg-[#17181A] border border-[#2A2B2E] rounded-2xl p-6 flex md:flex-row flex-col md:items-center justify-between overflow-hidden space-y-3 md:space-y-0">
               <span className="text-xs font-mono uppercase tracking-wider text-[#CDCCC8]/60">
                 Connect
               </span>

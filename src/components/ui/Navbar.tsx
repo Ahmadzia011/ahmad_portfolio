@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 min-h-[10vh] z-[100] flex justify-center items-center pt-6 md:pt-10 px-4 md:px-0">
+      <header className="sticky top-0 min-h-[10vh] z-100 flex justify-center items-center pt-6 md:pt-10 px-4 md:px-0">
         <nav className="w-full md:w-[35vw] h-[7vh] flex justify-between md:justify-center items-center rounded-full backdrop-blur-md shadow-lg px-6 md:px-10 bg-[#F2EFEB]/70 relative z-[101]">
           
           {/* Desktop Links */}

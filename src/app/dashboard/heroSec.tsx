@@ -27,11 +27,11 @@ export default function HeroSec() {
     <>
       <section
         ref={constraintsRef}
-        className="min-h-screen flex flex-col justify-start items-center pt-40 md:pt-50 pb-10 text-center overflow-hidden"
+        className="min-h-screen md:flex md:flex-col justify-start items-center pt-40 md:pt-50 pb-10 text-center overflow-hidden"
       >
         <motion.img
           src={"/3dIcon.avif"}
-          className="z-10 absolute h-20 md:h-40 left-80 top-50 md:top-60 cursor-pointer"
+          className="z-10 absolute h-20 md:h-40 left-70 top-50 md:top-60 cursor-pointer"
           drag
           dragConstraints={constraintsRef}
           animate={{
@@ -47,7 +47,7 @@ export default function HeroSec() {
         ></motion.img>
         <motion.img
           src={"/3dIcon2.avif"}
-          className="z-10 h-20 md:h-40 absolute right-80 md:bottom-70 bottom-125 rotate-20 cursor-pointer"
+          className="z-10 h-20 md:h-40 absolute right-70 md:bottom-70 bottom-125 rotate-20 cursor-pointer"
           drag
           dragConstraints={constraintsRef}
           animate={{
@@ -61,20 +61,20 @@ export default function HeroSec() {
             ease: "easeInOut",
           }}
         ></motion.img>
-        <div className="">
+        <div className="overflow-hidden">
 
-          <h1 className="w-full md:w-[60vw] pointer-events-none font-extrabold text-[#111111] text-6xl md:text-[178px] leading-[0.95] uppercase">
-            full stack <br />developer
+          <h1 className="w-screen md:w-[60vw] pointer-events-none font-extrabold text-[#111111] text-5xl md:text-[178px] leading-[0.95] uppercase">
+            full stack developer
           </h1>
         </div>
 
 
 
-        <div className="w-screen md:min-h-[32vh] md:w-[60vw] flex justify-center items-center md:justify-between md:items-end md:px-2 pt-5">
+        <div className="w-screen px-[12%] md:min-h-[32vh] md:w-[60vw] flex justify-center items-center md:justify-between md:items-end md:px-2 pt-5">
           <div className="font-archivo font-bold text-[#111111] text-2xl md:text-5xl leading-none tracking-tight normal-case">
             ©2026
           </div>
-          <div className="font-mono text-xs md:text-sm uppercase md:tracking-widest text-[#111111]/70 pl-10 md:pl-0">
+          <div className="font-mono text-end text-xs md:text-sm uppercase md:tracking-widest text-[#111111]/70 pl-10 md:pl-0">
             / BUILDING HIGH-IMPACT WEB EXPERIENCES
           </div>
         </div>
@@ -132,7 +132,7 @@ export default function HeroSec() {
           </div>
         </div>
 
-        <div className="md:hidden absolute pt-45 px-10 space-y-8 ">
+        <div className="md:hidden absolute pt-45 px-8  space-y-8 ">
             <p>Modern products require seamless execution. From full-stack Next.js applications and secure database backends to intelligent RAG chatbots, every system is crafted with clean architecture and zero technical bloat.<br/><br/>
             Focus stays on speed, reliability, and business outcomes—delivering scalable digital products that keep your launch on schedule and optimized for conversions.
             </p>

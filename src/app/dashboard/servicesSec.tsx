@@ -104,7 +104,7 @@ export default function InteractiveScrollSection() {
                     <span className={`font-mono text-sm ${isActive ? "text-[#F2EFEB]" : "text-neutral-600"}`}>
                       {item.id}
                     </span>
-                    <span className=" text-lg md:text-lg tracking-tight">
+                    <span className=" text-md md:text-lg tracking-tight">
                       {item.label}
                     </span>
                   </div>

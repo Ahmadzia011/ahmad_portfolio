@@ -30,44 +30,44 @@ export function FeaturedProjects() {
   const RANGE = [0.1, 0.2, 0.3, 0.8];
 
   const topInset = useTransform(smoothProgress, RANGE, [
-    isMobile ? "28%" : "45%",
-    isMobile ? "28%" : "45%",
-    isMobile ? "28%" : "45%",
-    "-30%",
+    isMobile ? "28.6%" : "45%",
+    isMobile ? "28.6%" : "45%",
+    isMobile ? "28.6%" : "45%",
+    "-60%",
   ]);
 
   const rightInset = useTransform(smoothProgress, RANGE, [
-    "50%",
-    "43%",
-    "43%",
+    isMobile ? "20%" : "50%",
+    isMobile ? "20%" : "43%",
+    isMobile ? "20%" : "43%",
     "-30%",
   ]);
   const bottomInset = useTransform(smoothProgress, RANGE, [
+    isMobile ? "70.7%" : "49%",
     isMobile ? "70%" : "49%",
-    isMobile ? "70%" : "49%",
-    isMobile ? "70%" : "49%",
-    "-30%",
+    isMobile ? "67.7%" : "49%",
+    "-20%",
   ]);
 
   const leftInset = useTransform(smoothProgress, RANGE, [
-    "50%",
-    "50%",
-    "50%",
+    isMobile ? "20%" : "50%",
+    isMobile ? "20%" : "50%",
+    isMobile ? "20%" : "50%",
     "-30%",
   ]);
 
-  const translateX1 = useTransform(
+  const translate1 = useTransform(
     smoothProgress,
     [0.1, 0.3, 1],
     [0, -10, -2200]
   );
-  const translateX2 = useTransform(
+  const translate2 = useTransform(
     smoothProgress,
     [0.1, 0.2, 0.3, 1],
     [0, isMobile ? 30 : 140, isMobile ? 60 : 170, 2200]
   );
 
-  const opacity = useTransform(smoothProgress, [0, 0.1], [0, 1.4]);
+  const opacity = useTransform(smoothProgress, [0, 0.2], [0, 1.4]);
   const blur = useTransform(smoothProgress, [0, 0.3], [2, 0]);
 
   const clipPath = useMotionTemplate`inset(${topInset} ${rightInset} ${bottomInset} ${leftInset} round 1rem)`;
@@ -81,11 +81,11 @@ export function FeaturedProjects() {
       ref={projectsContainer}
       className="relative min-h-[300vh] mask-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.2)_15%,rgba(0,0,0,0.7)_35%,black_60%)] "
     >
-      <div className="sticky top-0 min-h-screen overflow-hidden">
+      <div className="sticky top-10 min-h-screen overflow-hidden">
         {/* Background Revealed Text */}
-        <motion.section className="absolute inset- uppercase tracking-tighter bg-[#101010] text-[#F2EFEB] space-x-1 md:space-x-5 w-full min-h-screen flex justify-center text-4xl sm:text-6xl md:text-7xl font-semibold font-archivo items-center pt-5 px-4">
-          <motion.div style={{ translateX: translateX1 }}>featured</motion.div>
-          <motion.div style={{ translateX: translateX2 }}>PROJECTS</motion.div>
+        <motion.section className="max-w-scren absolute uppercase tracking-tighter bg-[#101010] text-[#F2EFEB] space-x-1 md:space-x-5 w-full min-h-screen flex flex-col md:flex-row justify-center text-5xl sm:text-6xl md:text-7xl font-semibold font-archivo items-center pt-5 px-4">
+          <motion.div style={isMobile ? {translateY: translate1} : { translateX: translate1 }}>featured</motion.div>
+          <motion.div style={isMobile ? {translateY: translate2} : { translateX: translate2 }}>PROJECTS</motion.div>
         </motion.section>
 
         {/* Foreground Content Card Grid */}
@@ -102,9 +102,9 @@ export function FeaturedProjects() {
             <span className="font-archivo text-xs md:text-sm font-medium tracking-widest text-[#111111]/60 uppercase">
               / PROJECTS
             </span>
-               <button className=" space-x-5  flex items-center justify-around w-20 md:w-30 border border-neutral-500 md:text-sm text-xs rounded-xl p-2 cursor-pointer bg-black text-white transition-all ease-in-out duration-400 hover:bg-transparent hover:text-black">
+               <button className=" space-x-5 hover:  flex items-center justify-around w-20 md:w-30 border border-neutral-500 md:text-sm text-xs rounded-xl p-2 cursor-pointer bg-black text-white transition-all ease-in-out duration-400 hover:bg-transparent hover:text-black">
                 View All 
-              <ArrowUpRight size={13} />
+              <ArrowUpRight size={13} className=""/>
             </button>
 
           </div>

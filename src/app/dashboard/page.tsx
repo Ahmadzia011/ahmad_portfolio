@@ -14,7 +14,7 @@ export default function Dashboard() {
     const isMobile = useMediaQuery('(max-width: 768px)');
   
   return (
-    <>
+    <section className="mx-0">
       <Navbar />
       <HeroSec />
 
@@ -44,6 +44,6 @@ export default function Dashboard() {
       <ContactSection />
       {/* <Projects/> */}
       <Footer />
-    </>
+    </section>
   );
 }
