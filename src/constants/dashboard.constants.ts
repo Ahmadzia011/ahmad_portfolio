@@ -63,3 +63,38 @@ export  const TESTIMONIALS = [
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
   },
 ];
+
+export type MessageData = 
+  {
+    name: string,
+    email: string,
+    message: string
+}
+
+
+  export const PROJECTS = [
+    {
+      title: "Damas",
+      category: "Agency Framer Template",
+      image:
+        "https://framerusercontent.com/images/VNXQLcPHw9VbVzy6BDpZ8pUsaU.png?scale-down-to=1024&width=1160&height=800",
+    },
+    {
+      title: "Najm",
+      category: "SaaS Template",
+      image:
+        "https://framerusercontent.com/images/WgEHVRrQs62rgxlzrnXJJ8rr4.png?scale-down-to=1024&width=1160&height=800",
+    },
+    {
+      title: "Kavi",
+      category: "AI Framer Template",
+      image:
+        "https://framerusercontent.com/images/I3azeVtkvdKBGl9TX38tUdXEb0.png?scale-down-to=1024&width=1160&height=800",
+    },
+    {
+      title: "PostWing",
+      category: "Social Media Scheduler",
+      image:
+        "https://framerusercontent.com/images/1C3zqERGdc7pqPIbDxtBaD4VGiQ.png?scale-down-to=1024&width=4096&height=2824",
+    },
+  ];

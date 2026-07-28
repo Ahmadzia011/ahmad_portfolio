@@ -3,13 +3,16 @@ import { ArrowUpRight } from "lucide-react";
 import { FeaturedProjects } from "./featuredProjectsSec";
 import { Testimonials } from "./testimonialsSec";
 import Services from "./servicesSec";
-import Navbar from "../components/ui/Navbar";
 import HeroSec from "./heroSec";
-import Footer from "../components/ui/Footer";
 import ContactSection from "./contactSec";
 import Marquee from "react-fast-marquee";
+import Footer from "@/src/components/ui/Footer";
+import Navbar from "@/src/components/ui/Navbar";
+import { useMediaQuery } from "@/src/lib/mediaQuery";
 
 export default function Dashboard() {
+    const isMobile = useMediaQuery('(max-width: 768px)');
+  
   return (
     <>
       <Navbar />
@@ -22,14 +25,15 @@ export default function Dashboard() {
       <Testimonials />
 
       {/* ==================== Divider ====================*/}
+
       <Marquee pauseOnHover={true} speed={70} className="bg-[#101010]">
-        <div className="flex items-center space-x-20 text-[#F2EFEB] pr-20 select-none">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i}>
-              <h2 className="text-5xl md:text-8xl font-semibold text-[#F5F4EE] tracking-tight pb-4">
+        <div className="flex items-center space-x-5 text-[#F2EFEB] pr-20 select-none">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="flex space-x-3 last:space-x-0 ">
+              <h2 className="text-4xl md:text-8xl font-semibold text-[#F5F4EE] tracking-tight md:pb-4">
                 Get In Touch
               </h2>
-              <ArrowUpRight size={100} />
+              <ArrowUpRight size={isMobile ? 40 : 100} />
             </div>
           ))}
         </div>

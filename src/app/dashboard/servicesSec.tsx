@@ -37,7 +37,7 @@ export default function InteractiveScrollSection() {
 
       {/* Sticky container pins the 2-column view to the screen */}
       <div className="sticky top-0 min-h-screen flex flex-col justify-center px-8 md:px-20 py-12 max-w-7xl mx-auto ">
-        
+
         {/* SECTION HEADER IDENTIFIER */}
         <div className="w-full pb-2">
           <span className=" text-xs md:text-sm font-medium tracking-widest text-neutral-400 uppercase">
@@ -76,7 +76,7 @@ export default function InteractiveScrollSection() {
                 </div>
               </motion.div>
             </AnimatePresence>
-            
+
           </div>
 
           {/* RIGHT COLUMN: Navigation Rows Indicator */}
@@ -87,8 +87,8 @@ export default function InteractiveScrollSection() {
                 <div
                   key={item.id}
                   className={`group relative text-left py-5 px-6 rounded-xl transition-all duration-300  flex items-center justify-between ${isActive
-                      ? "bg-neutral-900  text-[#F2EFEB] shadow-xl"
-                      : "bg-transparent text-neutral-500"
+                    ? "bg-neutral-900  text-[#F2EFEB] shadow-xl"
+                    : "bg-transparent text-neutral-500"
                     }`}
                 >
                   {/* Left edge active indicator line */}

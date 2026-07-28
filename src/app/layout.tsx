@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Archivo } from "next/font/google";
 import "./globals.css";
-import LenisScroll from "./lib/lenis";
+import LenisScroll from "../lib/lenis";
 
 const inter = Inter({
   variable: "--font-inter",

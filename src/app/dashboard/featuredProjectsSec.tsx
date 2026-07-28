@@ -1,4 +1,5 @@
-
+import { PROJECTS } from "@/src/constants/dashboard.constants";
+import { useMediaQuery } from "@/src/lib/mediaQuery";
 import {
   motion,
   useMotionTemplate,
@@ -6,86 +7,85 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 
 export function FeaturedProjects() {
   const projectsContainer = useRef(null);
+  
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
+  
   const { scrollYProgress } = useScroll({
     target: projectsContainer,
     offset: ["start start", "end end"],
   });
 
-  // 1. Keep your useSpring setup intact right above these lines:
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80, // Slightly lowered stiffness makes it feel even silkier
-    damping: 25, // Controlled friction prevents it from feeling too bouncy
+    stiffness: 80,
+    damping: 25,
     restDelta: 0.001,
   });
 
-  const RANGE = [0, 0.2, 0.3, 0.8];
+  const RANGE = [0.1, 0.2, 0.3, 0.8];
 
   const topInset = useTransform(smoothProgress, RANGE, [
-    "43%",
-    "43%",
-    "43%",
-    "-2%",
+    isMobile ? "28%" : "45%",
+    isMobile ? "28%" : "45%",
+    isMobile ? "28%" : "45%",
+    "-30%",
   ]);
+
   const rightInset = useTransform(smoothProgress, RANGE, [
     "50%",
     "43%",
     "43%",
-    "0%",
+    "-30%",
   ]);
   const bottomInset = useTransform(smoothProgress, RANGE, [
-    "52%",
-    "52%",
-    "52%",
-    "0%",
+    isMobile ? "70%" : "49%",
+    isMobile ? "70%" : "49%",
+    isMobile ? "70%" : "49%",
+    "-30%",
   ]);
+
   const leftInset = useTransform(smoothProgress, RANGE, [
     "50%",
     "50%",
     "50%",
-    "0%",
+    "-30%",
   ]);
 
   const translateX1 = useTransform(
     smoothProgress,
-    [0, 0.3, 1],
-    [0, -10, -1500]
+    [0.1, 0.3, 1],
+    [0, -10, -2200]
   );
   const translateX2 = useTransform(
     smoothProgress,
-    [0, 0.2, 0.3, 1],
-    [0, 140, 150, 1300]
+    [0.1, 0.2, 0.3, 1],
+    [0, isMobile ? 30 : 140, isMobile ? 60 : 170, 2200]
   );
 
   const opacity = useTransform(smoothProgress, [0, 0.1], [0, 1.4]);
   const blur = useTransform(smoothProgress, [0, 0.3], [2, 0]);
 
-  // 3. Keep your template exactly as it is
   const clipPath = useMotionTemplate`inset(${topInset} ${rightInset} ${bottomInset} ${leftInset} round 1rem)`;
   const filter = useMotionTemplate`blur(${blur}px)`;
 
+  
+
   return (
-    // this is the runway for animation
     <section
       id="projects-section"
       ref={projectsContainer}
-      className="relative min-h-[300vh] [mask-image:linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.2)_15%,rgba(0,0,0,0.7)_35%,black_60%)]"
+      className="relative min-h-[300vh] mask-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.2)_15%,rgba(0,0,0,0.7)_35%,black_60%)] "
     >
-      {/* this div is to make the inner container sticky */}
-      <div className="sticky top-0 min-h-screen">
-
+      <div className="sticky top-0 min-h-screen overflow-hidden">
         {/* Background Revealed Text */}
-        <motion.section className="absolute pt-13 uppercase overflow-hidden tracking-tighter bg-[#101010] text-[#F2EFEB] space-x-10 w-full min-h-screen flex justify-center text-4xl md:text-7xl font-semibold font-archivo items-center">
-          <motion.div style={{ translateX: translateX1 }}>
-            featured
-          </motion.div>
-          <motion.div style={{ translateX: translateX2 }}>
-            PROJECTS
-          </motion.div>
+        <motion.section className="absolute inset- uppercase tracking-tighter bg-[#101010] text-[#F2EFEB] space-x-1 md:space-x-5 w-full min-h-screen flex justify-center text-4xl sm:text-6xl md:text-7xl font-semibold font-archivo items-center pt-5 px-4">
+          <motion.div style={{ translateX: translateX1 }}>featured</motion.div>
+          <motion.div style={{ translateX: translateX2 }}>PROJECTS</motion.div>
         </motion.section>
 
         {/* Foreground Content Card Grid */}
@@ -95,100 +95,44 @@ export function FeaturedProjects() {
             opacity,
             filter,
           }}
-          className="w-full bg-[#F2EFEB] min-h-screen flex flex-col justify-between py-[5vh] items-center"
+          className="w-full bg-[#F2EFEB] min-h-screen flex flex-col justify-between py-8 md:py-[5vh] items-center overflow-y-auto md:overflow-hidden"
         >
           {/* SECTION HEADER IDENTIFIER */}
-          <div className="w-[60vw] mx-auto pt-4 pb-2">
+          <div className="w-[85vw] md:w-[60vw] mx-auto pt-25 md:pt-23 pb-5 flex justify-between items-center">
             <span className="font-archivo text-xs md:text-sm font-medium tracking-widest text-[#111111]/60 uppercase">
               / PROJECTS
             </span>
+               <button className=" space-x-5  flex items-center justify-around w-20 md:w-30 border border-neutral-500 md:text-sm text-xs rounded-xl p-2 cursor-pointer bg-black text-white transition-all ease-in-out duration-400 hover:bg-transparent hover:text-black">
+                View All 
+              <ArrowUpRight size={13} />
+            </button>
+
           </div>
 
-          <div className="min-h-screen w-full flex items-center">
-            <div className="w-[60vw] mx-auto space-y-12">
-
-              {/* First Project Row */}
-              <div className="flex justify-around">
-                {/* First Row - First Column Card*/}
-                <div className="space-y-2 cursor-pointer group">
-                  <div className="h-[36vh] w-[27vw] overflow-hidden rounded-3xl">
-                    <img
-                      src={
-                        "https://framerusercontent.com/images/VNXQLcPHw9VbVzy6BDpZ8pUsaU.png?scale-down-to=1024&width=1160&height=800"
-                      }
-                      alt="Damas Project"
-                      className="h-full w-full object-cover object-top transition duration-300 ease-in-out group-hover:scale-105"
-                    />
+          <div className="flex-1 w-full flex items-center justify-center my-auto px-6">
+            <div className="w-[85vw] md:w-[60vw] mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 md:gap-y-5">
+                {PROJECTS.map((project, index) => (
+                  <div
+                    key={index}
+                    className="space-y-2 cursor-pointer group w-full"
+                  >
+                    <div className="h-[28vh] sm:h-[32vh] md:h-[32vh] overflow-hidden rounded-2xl md:rounded-3xl">
+                      <img
+                        src={project.image}
+                        alt={`${project.title} Project`}
+                        className="h-full w-full object-cover object-top transition duration-300 ease-in-out group-hover:scale-105"
+                      />
+                    </div>
+                    <h3 className="font-archivo text-xl sm:text-2xl md:text-[24px] font-semibold text-[#111111] tracking-tight pt-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-neutral-600 text-sm md:text-[12px] font-normal">
+                      {project.category}
+                    </p>
                   </div>
-                  <h3 className="font-archivo text-[28px] font-semibold text-[#111111] tracking-tight pt-2">
-                    Damas
-                  </h3>
-                  <p className="text-neutral-600 text-[15px] font-normal">
-                    Agency Framer Template
-                  </p>
-                </div>
-
-                {/* First Row - Second Column Card */}
-                <div className="space-y-2 cursor-pointer group">
-                  <div className="h-[36vh] w-[27vw] overflow-hidden rounded-3xl">
-                    <img
-                      src={
-                        "https://framerusercontent.com/images/WgEHVRrQs62rgxlzrnXJJ8rr4.png?scale-down-to=1024&width=1160&height=800"
-                      }
-                      alt="Najm Project"
-                      className="h-full w-full object-cover object-top transition duration-300 ease-in-out group-hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="font-archivo text-[28px] font-semibold text-[#111111] tracking-tight pt-2">
-                    Najm
-                  </h3>
-                  <p className="text-neutral-600 text-[15px] font-normal">
-                    SaaS Template
-                  </p>
-                </div>
+                ))}
               </div>
-
-              {/* Second Project Row */}
-              <div className="flex justify-around">
-                {/* Second Row - First Column Card*/}
-                <div className="space-y-2 cursor-pointer group">
-                  <div className="h-[36vh] w-[27vw] overflow-hidden rounded-3xl">
-                    <img
-                      src={
-                        "https://framerusercontent.com/images/I3azeVtkvdKBGl9TX38tUdXEb0.png?scale-down-to=1024&width=1160&height=800"
-                      }
-                      alt="Kavi Project"
-                      className="h-full w-full object-cover object-top transition duration-300 ease-in-out group-hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="font-archivo text-[28px] font-semibold text-[#111111] tracking-tight pt-2">
-                    Kavi
-                  </h3>
-                  <p className="text-neutral-600 text-[15px] font-normal">
-                    AI Framer Template
-                  </p>
-                </div>
-
-                {/* Second Row - Second Column Card*/}
-                <div className="space-y-2 cursor-pointer group">
-                  <div className="h-[36vh] w-[27vw] overflow-hidden rounded-3xl">
-                    <img
-                      src={
-                        "https://framerusercontent.com/images/1C3zqERGdc7pqPIbDxtBaD4VGiQ.png?scale-down-to=1024&width=4096&height=2824"
-                      }
-                      alt="PostWing Project"
-                      className="h-full w-full object-cover object-top transition duration-300 ease-in-out group-hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="font-archivo text-[28px] font-semibold text-[#111111] tracking-tight pt-2">
-                    PostWing
-                  </h3>
-                  <p className="text-neutral-600 text-[15px] font-normal">
-                    Social Media Scheduler
-                  </p>
-                </div>
-              </div>
-
             </div>
           </div>
         </motion.section>

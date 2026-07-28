@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 
 const paragraph = "From idea to launch. Clean, scalable digital products built to move fast, stay simple, and perform in real-world use, driven by clarity, structured systems, and intentional design.";
 
@@ -45,7 +45,7 @@ export default function TextReveal() {
   );
 }
 
-function Word({ word, progress, range }) {
+function Word({word, progress, range}:{word:string, progress:MotionValue<number>, range:number[]}) {
   // Animates smoothly from gray to black as the range is hit
   const color = useTransform(progress, range, ["#d1d5db", "#111111"]);
 

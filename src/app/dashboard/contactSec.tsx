@@ -2,12 +2,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 
+import { MessageData } from "@/src/constants/dashboard.constants";
+
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+  const [formData, setFormData] = useState<MessageData>({
+    name : '',
+    email: '',
+    message: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -20,16 +22,14 @@ export default function ContactSection() {
   return (
     <section className="min-h-screen w-full py-[15vh] bg-[#101010] text-[#CDCCC8] font-archivo select-none">
       <div className="max-w-6xl w-full mx-auto px-6 flex flex-col items-center">
-        
-        
-     
+
 
         {/* 2-COLUMN GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-start">
-          
+
           {/* LEFT COLUMN: Direct Info & Quick Links */}
           <div className="flex flex-col space-y-8">
-            
+
             {/* Status Card */}
             <div className="bg-[#17181A] border border-[#2A2B2E] rounded-3xl p-8 space-y-6">
               <h3 className="text-2xl md:text-3xl text-[#F5F4EE] leading-tight">
@@ -43,9 +43,9 @@ export default function ContactSection() {
 
             {/* Direct Contact Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              
+
               <a
-                href="mailto:contact@example.com"
+                href="mailto:ahmadzia.devs@gmail.com"
                 className="group bg-[#17181A] border border-[#2A2B2E] hover:border-neutral-500 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between h-36"
               >
                 <div className="flex justify-between items-center text-[#F5F4EE]">
@@ -57,7 +57,8 @@ export default function ContactSection() {
                     Email
                   </p>
                   <p className="text-sm font-semibold text-[#F5F4EE] pt-1 truncate">
-                    contact@example.com
+                    ahmadzia.devs@gmail.com
+
                   </p>
                 </div>
               </a>
@@ -101,9 +102,9 @@ export default function ContactSection() {
 
           {/* RIGHT COLUMN: Interactive Form */}
           <div className="bg-[#17181A] border border-[#2A2B2E] rounded-3xl p-8 md:p-10 shadow-2xl">
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
-              
+
               {/* Name Input */}
               <div className="space-y-2">
                 <label className="text-xs font-mono uppercase tracking-wider text-[#F5F4EE]/80">
@@ -114,7 +115,7 @@ export default function ContactSection() {
                   required
                   placeholder="John Doe"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => setFormData((prev) => ({...prev, name:e.target.value}))}
                   className="w-full bg-[#101010] border border-[#2A2B2E] focus:border-neutral-500 rounded-xl px-4 py-3.5 text-sm text-[#F5F4EE] placeholder-[#CDCCC8]/30 outline-none transition-colors"
                 />
               </div>
@@ -129,7 +130,7 @@ export default function ContactSection() {
                   required
                   placeholder="john@example.com"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => setFormData((prev) => ({...prev, email:e.target.value}))}
                   className="w-full bg-[#101010] border border-[#2A2B2E] focus:border-neutral-500 rounded-xl px-4 py-3.5 text-sm text-[#F5F4EE] placeholder-[#CDCCC8]/30 outline-none transition-colors"
                 />
               </div>
@@ -144,7 +145,7 @@ export default function ContactSection() {
                   rows={5}
                   placeholder="Tell me about your project or idea..."
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) => setFormData((prev) => ({...prev, message:e.target.value}))}
                   className="w-full bg-[#101010] border border-[#2A2B2E] focus:border-neutral-500 rounded-xl p-4 text-sm text-[#F5F4EE] placeholder-[#CDCCC8]/30 outline-none transition-colors resize-none"
                 />
               </div>

@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import Footer from "../components/ui/Footer";
+import Footer from "../../components/ui/Footer";
 import { TESTIMONIALS } from "@/src/constants/dashboard.constants";
 import Marquee from 'react-fast-marquee'
 
@@ -21,18 +21,18 @@ export function Testimonials() {
     <>
       <motion.section
         id="testimonials-section"
-        className="min-h-[120vh] w-full py-[25vh] bg-[#101010]"
+        className="min-h-[120vh] w-full py-[25vh] bg-[#101010] overflow-hidden"
       >
         <div className="max-w-6xl w-full mx-auto px-6 flex flex-col items-center">
-          
+
           {/* SECTION HEADER IDENTIFIER */}
           <div className="w-full text-center pb-5">
-           <h1 className=" text-xs md:text-sm font-medium tracking-widest text-neutral-400 uppercase">
+            <h1 className=" text-xs md:text-sm font-medium tracking-widest text-neutral-400 uppercase">
               / TESTIMONIALS
             </h1>
           </div>
 
-         <h2 className="uppercase text-2xl md:text-5xl font-semibold text-[#F2EFEB] tracking-tight pb-25 text-center">
+          <h2 className="uppercase text-2xl md:text-5xl font-semibold text-[#F2EFEB] tracking-tight pb-25 text-center">
             What Clients Say
           </h2>
 
