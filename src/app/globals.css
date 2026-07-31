@@ -8,11 +8,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
 @theme {
-  --font-archivo: var(--font-archivo), sans-serif;
-
-
+  --breakpoint-xs: 375px;
+  --breakpoint-sm: 430px;
 }
+
 
 html {
   scroll-behavior: smooth;

@@ -33,22 +33,22 @@ export default function InteractiveScrollSection() {
 
   return (
     // Runway height dictates how much scroll distance each slide takes
-    <section id="services-section" ref={containerRef} className="relative min-h-[300vh] bg-[#111111] text-[#F2EFEB] ">
+    <section id="services-section" ref={containerRef} className="relative min-h-[300vh] pt-10 bg-[#111111] text-[#F2EFEB] ">
 
       {/* Sticky container pins the 2-column view to the screen */}
-      <div className="sticky top-0 min-h-screen flex flex-col justify-center px-8 md:px-20 py-12 max-w-7xl mx-auto ">
+      <div className=" sticky top-10 min-h-screen flex flex-col justify-center px-8 md:px-20 max-w-7xl mx-auto ">
 
         {/* SECTION HEADER IDENTIFIER */}
-        <div className="w-full pb-2">
+        <div className="w-full pb-2 ">
           <span className=" text-xs md:text-sm font-medium tracking-widest text-neutral-400 uppercase">
             / SERVICES
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 w-full items-center">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-20 w-full items-center">
 
           {/* LEFT COLUMN: Dynamic Active Content */}
-          <div className="relative min-h-70 flex items-center">
+          <div className="relative  sm:min-h-70 flex items-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -58,7 +58,7 @@ export default function InteractiveScrollSection() {
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-6"
               >
-                <h2 className="text-4xl md:text-5xl tracking-tight leading-tight text-[#F2EFEB]">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight text-[#F2EFEB]">
                   {SECTIONS[activeIndex]?.title}
                 </h2>
                 <p className="text-neutral-400 text-base md:text-lg leading-relaxed">
@@ -80,13 +80,13 @@ export default function InteractiveScrollSection() {
           </div>
 
           {/* RIGHT COLUMN: Navigation Rows Indicator */}
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-4 ">
             {SECTIONS.map((item, index) => {
               const isActive = activeIndex === index;
               return (
                 <div
                   key={item.id}
-                  className={`group relative text-left py-5 px-6 rounded-xl transition-all duration-300  flex items-center justify-between ${isActive
+                  className={`group relative text-left py-3 sm:py-5 px-6 rounded-xl transition-all duration-300  flex items-center justify-between ${isActive
                     ? "bg-neutral-900  text-[#F2EFEB] shadow-xl"
                     : "bg-transparent text-neutral-500"
                     }`}
@@ -104,7 +104,7 @@ export default function InteractiveScrollSection() {
                     <span className={`font-mono text-sm ${isActive ? "text-[#F2EFEB]" : "text-neutral-600"}`}>
                       {item.id}
                     </span>
-                    <span className=" text-md md:text-lg tracking-tight">
+                    <span className=" text-sm sm:text-md md:text-lg tracking-tight">
                       {item.label}
                     </span>
                   </div>

@@ -14,6 +14,7 @@ export function FeaturedProjects() {
   const projectsContainer = useRef(null);
   
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const isSmallMobile = useMediaQuery('(max-width: 375px)');
 
   
   const { scrollYProgress } = useScroll({
@@ -27,50 +28,50 @@ export function FeaturedProjects() {
     restDelta: 0.001,
   });
 
-  const RANGE = [0.1, 0.2, 0.3, 0.8];
+  const RANGE = isMobile ? [0.2, 0.3, 0.4, 0.8] : [0.1, 0.2, 0.3, 0.8];
 
   const topInset = useTransform(smoothProgress, RANGE, [
-    isMobile ? "28.6%" : "45%",
-    isMobile ? "28.6%" : "45%",
-    isMobile ? "28.6%" : "45%",
+    isMobile ? "26%" : "45%",
+    isMobile ? "26%" : "45%",
+    isMobile ? "26%" : "45%",
     "-60%",
   ]);
 
   const rightInset = useTransform(smoothProgress, RANGE, [
-    isMobile ? "20%" : "50%",
-    isMobile ? "20%" : "43%",
-    isMobile ? "20%" : "43%",
+    isMobile ? "23%" : "50%",
+    isMobile ? "23%" : "43%",
+    isMobile ? "23%" : "43%",
     "-30%",
   ]);
   const bottomInset = useTransform(smoothProgress, RANGE, [
-    isMobile ? "70.7%" : "49%",
-    isMobile ? "70%" : "49%",
-    isMobile ? "67.7%" : "49%",
+    isMobile ? "73.5%" : "49%",
+    isMobile ? "72%" : "49%",
+    isMobile ? "55%" : "49%",
     "-20%",
   ]);
 
   const leftInset = useTransform(smoothProgress, RANGE, [
-    isMobile ? "20%" : "50%",
-    isMobile ? "20%" : "50%",
-    isMobile ? "20%" : "50%",
+    isMobile ? "22%" : "50%",
+    isMobile ? "22%" : "50%",
+    isMobile ? "22%" : "50%",
     "-30%",
   ]);
 
   const translate1 = useTransform(
     smoothProgress,
-    [0.1, 0.3, 1],
-    [0, -10, -2200]
+    [0.1, isMobile ? 0.4 : 0.3, 1],
+    [0, -25, -2200]
   );
   const translate2 = useTransform(
     smoothProgress,
     [0.1, 0.2, 0.3, 1],
-    [0, isMobile ? 30 : 140, isMobile ? 60 : 170, 2200]
+    [0, isMobile ? 20 : 140, isMobile ? 30 : 170, 2200]
   );
 
-  const opacity = useTransform(smoothProgress, [0, 0.2], [0, 1.4]);
+  const opacity = useTransform(smoothProgress, [0, 0.1], [0, 1.4]);
   const blur = useTransform(smoothProgress, [0, 0.3], [2, 0]);
 
-  const clipPath = useMotionTemplate`inset(${topInset} ${rightInset} ${bottomInset} ${leftInset} round 1rem)`;
+  const clipPath = useMotionTemplate`inset(${topInset} ${rightInset} ${bottomInset} ${leftInset} round 3px)`;
   const filter = useMotionTemplate`blur(${blur}px)`;
 
   
@@ -79,11 +80,11 @@ export function FeaturedProjects() {
     <section
       id="projects-section"
       ref={projectsContainer}
-      className="relative min-h-[300vh] mask-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.2)_15%,rgba(0,0,0,0.7)_35%,black_60%)] "
+      className="relative min-h-[350vh] mask-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.2)_15%,rgba(0,0,0,0.7)_35%,black_60%)] "
     >
       <div className="sticky top-10 min-h-screen overflow-hidden">
         {/* Background Revealed Text */}
-        <motion.section className="max-w-scren absolute uppercase tracking-tighter bg-[#101010] text-[#F2EFEB] space-x-1 md:space-x-5 w-full min-h-screen flex flex-col md:flex-row justify-center text-5xl sm:text-6xl md:text-7xl font-semibold font-archivo items-center pt-5 px-4">
+        <motion.section className="max-w-scren absolute uppercase tracking-tighter bg-[#101010] text-[#F2EFEB] space-x-1 md:space-x-5 w-full min-h-screen flex flex-col md:flex-row justify-center xs:leading-13 text-[43px] sm:text-5xl md:text-7xl font-semibold font-archivo items-center sm:pt-5 px-4">
           <motion.div style={isMobile ? {translateY: translate1} : { translateX: translate1 }}>featured</motion.div>
           <motion.div style={isMobile ? {translateY: translate2} : { translateX: translate2 }}>PROJECTS</motion.div>
         </motion.section>

@@ -26,7 +26,7 @@ export default function Dashboard() {
 
       {/* ==================== Divider ====================*/}
 
-      <Marquee pauseOnHover={true} speed={70} className="bg-[#101010]">
+      <Marquee pauseOnHover={true} speed={70} className="bg-[#101010] overflow-hidden">
         <div className="flex items-center space-x-5 text-[#F2EFEB] pr-20 select-none">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="flex space-x-3 last:space-x-0 ">
