@@ -64,11 +64,11 @@ export default function InteractiveScrollSection() {
                 <p className="text-neutral-400 text-base md:text-lg leading-relaxed">
                   {SECTIONS[activeIndex]?.description}
                 </p>
-                <div className="flex flex-wrap gap-3 pt-2">
+                <div className="flex flex-wrap sm:gap-3 pt-2">
                   {SECTIONS[activeIndex]?.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900 text-neutral-300 font-mono tracking-tight"
+                      className="text-xs px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900 text-neutral-300 font-mono tracking-tight"
                     >
                       {tag}
                     </span>
@@ -80,7 +80,7 @@ export default function InteractiveScrollSection() {
           </div>
 
           {/* RIGHT COLUMN: Navigation Rows Indicator */}
-          <div className="flex flex-col space-y-4 ">
+          <div className="flex flex-col space-y-3 ">
             {SECTIONS.map((item, index) => {
               const isActive = activeIndex === index;
               return (
