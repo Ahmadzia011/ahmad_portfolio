@@ -80,7 +80,7 @@ export default function HeroSec() {
 
       <section
         ref={containerRef}
-        className="xs:min-h-[90vh] border border-red-500 md:min-h-[120vh] flex justify-center"
+        className="xs:min-h-[90vh] md:min-h-[120vh] flex justify-center"
       >
         <div className="hidden w-[25vw] pt-50 md:flex items-center"> {/*Hidden on mobile view*/}
           <div className="wrap-normal w-[20vw] space-y-30 pr-5">
