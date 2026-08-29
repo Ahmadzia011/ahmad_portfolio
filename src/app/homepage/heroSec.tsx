@@ -1,5 +1,6 @@
 
 import { useMediaQuery } from "@/src/lib/mediaQuery";
+import { Button } from "@base-ui/react/button";
 import { useScroll, useTransform, motion, useMotionValueEvent, useMotionValue, easeInOut, color, useSpring } from "framer-motion";
 import { ArrowUpRight, Circle } from "lucide-react";
 import { useRef } from "react";
@@ -64,11 +65,15 @@ export default function HeroSec() {
         ></motion.img>
         <div className="overflow-hidden">
 
-          <h1 className="w-screen md:w-[60vw] pointer-events-none font-extrabold text-[#111111] text-5xl md:text-[178px] leading-[0.95] uppercase">
-            full stack developer
-          </h1>
+          <div
+           className="w-full md:w-full pointer-events-none uppercase">
+            <h1
+             className="font-extrabold text-[#111111] text-5xl md:text-[178px] leading-[0.95]">full stack developer</h1>            
+
+
+          </div>
         </div>
-        <div className="w-screen px-[12%] md:min-h-[32vh] md:w-[60vw] flex justify-center items-center md:justify-between md:items-end md:px-2 pt-5">
+        <div className="w-full px-[12%] md:min-h-[32vh] md:w-[60vw] flex justify-center items-center md:justify-between md:items-end md:px-2 pt-5">
           <div className="font-archivo font-bold text-[#111111] text-2xl md:text-5xl leading-none tracking-tight normal-case">
             ©2026
           </div>
@@ -107,13 +112,13 @@ export default function HeroSec() {
                 className="relative h-full w-full rounded-xl transform-3d"
               >
                 <img
-                  src="/backside.png"
+                  src="/headshot.jpeg"
                   alt="Front"
                   className="h-full w-full rounded-xl object-cover"
                 />
                 <div className="absolute inset-0 h-full w-full backface-hidden rotate-y-180">
                   <img
-                    src={"/backside.png"}
+                    src={"/headshot.jpeg"}
                     alt="Back"
                     className=" h-full w-full rounded-xl object-cover "
                   />
@@ -128,7 +133,7 @@ export default function HeroSec() {
           </p>
           <button className=" md:hidden flex items-center justify-around w-35 border border-neutral-500 text-sm rounded-xl p-2 cursor-pointer bg-black text-white transition-all ease-in-out duration-400 hover:bg-transparent hover:text-black">
             Let's connect
-            <ArrowUpRight size={20} />
+            <ArrowUpRight size={20} className="" />
           </button>
         </div>
 
@@ -142,7 +147,7 @@ export default function HeroSec() {
             </p>
             <button className="flex items-center justify-around w-33 border border-neutral-500 text-sm rounded-xl p-2 cursor-pointer bg-black text-white transition-all ease-in-out duration-400 hover:bg-transparent hover:text-black">
               Let's connect
-              <ArrowUpRight size={20} />
+              <ArrowUpRight size={17} />
             </button>
           </div>
         </div>

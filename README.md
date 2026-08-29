@@ -43,8 +43,6 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 ## 📱 Responsive Strategy
 
 The architecture adheres strictly to a **zero desktop regression** rule:

@@ -80,7 +80,7 @@ export function FeaturedProjects() {
     <section
       id="projects-section"
       ref={projectsContainer}
-      className="relative min-h-[350vh] mask-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.2)_15%,rgba(0,0,0,0.7)_35%,black_60%)] "
+      className="relative min-h-[260vh] mask-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.2)_15%,rgba(0,0,0,0.7)_35%,black_60%)] "
     >
       <div className="sticky top-10 min-h-screen overflow-hidden">
         {/* Background Revealed Text */}

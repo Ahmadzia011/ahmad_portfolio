@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent, useSpring } from "framer-motion";
 import { SECTIONS } from "@/src/constants/dashboard.constants";
+import { Button } from "@/components/ui/button";
 
 export default function InteractiveScrollSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -32,9 +33,9 @@ export default function InteractiveScrollSection() {
   });
 
   return (
+
     // Runway height dictates how much scroll distance each slide takes
     <section id="services-section" ref={containerRef} className="relative min-h-[300vh] pt-10 bg-[#111111] text-[#F2EFEB] ">
-
       {/* Sticky container pins the 2-column view to the screen */}
       <div className=" sticky top-10 min-h-screen flex flex-col justify-center px-8 md:px-20 max-w-7xl mx-auto ">
 
