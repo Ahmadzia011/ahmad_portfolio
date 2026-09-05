@@ -25,7 +25,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${archivo.variable} h-full antialiased`}>
-      <LenisScroll><body className="min-h-full flex flex-col">{children}</body></LenisScroll>
+      <LenisScroll><body className="min-h-full flex flex-col">{children}
+      
+      <script 
+        src="https://scrapcher.vercel.app/api/widget" 
+        data-chatbot-id="62922f395cd5a790b879b04d3a4ee595cb60e39d89945cf84ffb7ecbe57c9ad9"
+        data-name="Assistant"
+        data-accent="#181818"
+        data-background="#f8fafc"
+        data-panel="#ffffff"
+        data-text="#0f172a"
+        async>
+      </script>
+        
+      </body></LenisScroll>
     </html>
   );
 }
