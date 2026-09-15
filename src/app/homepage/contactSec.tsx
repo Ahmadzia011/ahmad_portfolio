@@ -1,7 +1,18 @@
 import { useState } from "react";
-import { ArrowUpRight, Mail, MapPin, Send, ExternalLink } from "lucide-react";
+import {
+  ArrowUpRight,
+  ExternalLink,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Send,
+} from "lucide-react";
 import Link from "next/link";
-import { SITE_EMAIL } from "@/src/constants/site.constants";
+import {
+  SITE_EMAIL,
+  SITE_WHATSAPP_NUMBER,
+  SITE_WHATSAPP_URL,
+} from "@/src/constants/site.constants";
 
 type ContactForm = {
   name: string;
@@ -68,19 +79,26 @@ export default function ContactSection() {
                 </div>
               </a>
 
-              <div className="flex h-36 flex-col justify-between rounded-2xl border border-panel-border bg-panel p-6">
-                <div className="text-paper">
-                  <MapPin className="size-5" />
+              <a
+                href={SITE_WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Message Ahmad on WhatsApp at ${SITE_WHATSAPP_NUMBER}`}
+                className="group flex h-36 flex-col justify-between rounded-2xl border border-panel-border bg-panel p-6 transition-colors duration-300 hover:border-neutral-500"
+              >
+                <div className="flex items-center justify-between text-paper">
+                  <MessageCircle className="size-5" />
+                  <ArrowUpRight className="size-4 opacity-0 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
                 </div>
                 <div>
                   <p className="font-mono text-xs uppercase tracking-wider text-soft/60">
-                    Location
+                    WhatsApp
                   </p>
                   <p className="pt-1 text-sm font-semibold text-paper">
-                    Remote / Global
+                    {SITE_WHATSAPP_NUMBER}
                   </p>
                 </div>
-              </div>
+              </a>
             </div>
 
             <div className="flex flex-col justify-between gap-3 overflow-hidden rounded-2xl border border-panel-border bg-panel p-6 md:flex-row md:items-center">

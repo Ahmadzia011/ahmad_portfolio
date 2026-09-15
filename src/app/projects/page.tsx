@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import Navbar from "@/src/components/ui/Navbar";
 import Footer from "@/src/components/ui/Footer";
 import ProjectCard from "@/src/components/projects/ProjectCard";
