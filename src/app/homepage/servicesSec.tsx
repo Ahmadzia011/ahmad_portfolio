@@ -1,8 +1,7 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent, useSpring } from "framer-motion";
-import { SECTIONS } from "@/src/constants/dashboard.constants";
-import { Button } from "@/components/ui/button";
+import { SERVICES } from "@/src/constants/dashboard.constants";
 
 export default function InteractiveScrollSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -22,10 +21,10 @@ export default function InteractiveScrollSection() {
 
   // 2. Map scroll progress (0.0 to 1.0) directly into active array index steps
   useMotionValueEvent(smoothProgress, "change", (latest) => {
-    const step = 1 / SECTIONS.length;
+    const step = 1 / SERVICES.length;
     const newIndex = Math.min(
       Math.floor(latest / step),
-      SECTIONS.length - 1
+      SERVICES.length - 1
     );
     if (newIndex !== activeIndex) {
       setActiveIndex(newIndex);
@@ -35,7 +34,7 @@ export default function InteractiveScrollSection() {
   return (
 
     // Runway height dictates how much scroll distance each slide takes
-    <section id="services-section" ref={containerRef} className="relative min-h-[300vh] pt-10 bg-[#111111] text-[#F2EFEB] ">
+    <section id="services-section" ref={containerRef} className="relative min-h-[300vh] bg-ink pt-10 text-paper">
       {/* Sticky container pins the 2-column view to the screen */}
       <div className=" sticky top-10 min-h-screen flex flex-col justify-center px-8 md:px-20 max-w-7xl mx-auto ">
 
@@ -59,14 +58,14 @@ export default function InteractiveScrollSection() {
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-6"
               >
-                <h2 className="text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight text-[#F2EFEB]">
-                  {SECTIONS[activeIndex]?.title}
+                <h2 className="text-3xl leading-tight tracking-tight text-paper sm:text-4xl md:text-5xl">
+                  {SERVICES[activeIndex]?.title}
                 </h2>
                 <p className="text-neutral-400 text-base md:text-lg leading-relaxed">
-                  {SECTIONS[activeIndex]?.description}
+                  {SERVICES[activeIndex]?.description}
                 </p>
                 <div className="flex flex-wrap sm:gap-3 pt-2">
-                  {SECTIONS[activeIndex]?.tags.map((tag) => (
+                  {SERVICES[activeIndex]?.tags.map((tag) => (
                     <span
                       key={tag}
                       className="text-xs px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900 text-neutral-300 font-mono tracking-tight"
@@ -82,13 +81,13 @@ export default function InteractiveScrollSection() {
 
           {/* RIGHT COLUMN: Navigation Rows Indicator */}
           <div className="flex flex-col space-y-3 ">
-            {SECTIONS.map((item, index) => {
+            {SERVICES.map((item, index) => {
               const isActive = activeIndex === index;
               return (
                 <div
                   key={item.id}
                   className={`group relative text-left py-3 sm:py-5 px-6 rounded-xl transition-all duration-300  flex items-center justify-between ${isActive
-                    ? "bg-neutral-900  text-[#F2EFEB] shadow-xl"
+                    ? "bg-neutral-900 text-paper shadow-xl"
                     : "bg-transparent text-neutral-500"
                     }`}
                 >
@@ -96,16 +95,16 @@ export default function InteractiveScrollSection() {
                   {isActive && (
                     <motion.div
                       layoutId="activeIndicator"
-                      className="absolute left-0 top-3 bottom-3 w-1 bg-[#F2EFEB] rounded-r-full"
+                      className="absolute bottom-3 left-0 top-3 w-1 rounded-r-full bg-paper"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
 
                   <div className="flex items-center gap-4">
-                    <span className={`font-mono text-sm ${isActive ? "text-[#F2EFEB]" : "text-neutral-600"}`}>
+                    <span className={`font-mono text-sm ${isActive ? "text-paper" : "text-neutral-600"}`}>
                       {item.id}
                     </span>
-                    <span className=" text-sm sm:text-md md:text-lg tracking-tight">
+                    <span className="text-sm tracking-tight sm:text-base md:text-lg">
                       {item.label}
                     </span>
                   </div>

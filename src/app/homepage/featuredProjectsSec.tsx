@@ -1,5 +1,7 @@
-import { PROJECTS } from "@/src/constants/dashboard.constants";
+import { PROJECTS } from "@/src/data/projects";
 import { useMediaQuery } from "@/src/lib/mediaQuery";
+import Link from "next/link";
+import Image from "next/image";
 import {
   motion,
   useMotionTemplate,
@@ -10,13 +12,12 @@ import {
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 
+const FEATURED_PROJECTS = PROJECTS.slice(0, 4);
+
 export function FeaturedProjects() {
   const projectsContainer = useRef(null);
   
   const isMobile = useMediaQuery('(max-width: 768px)');
-  const isSmallMobile = useMediaQuery('(max-width: 375px)');
-
-  
   const { scrollYProgress } = useScroll({
     target: projectsContainer,
     offset: ["start start", "end end"],
@@ -84,7 +85,7 @@ export function FeaturedProjects() {
     >
       <div className="sticky top-10 min-h-screen overflow-hidden">
         {/* Background Revealed Text */}
-        <motion.section className="max-w-scren absolute uppercase tracking-tighter bg-[#101010] text-[#F2EFEB] space-x-1 md:space-x-5 w-full min-h-screen flex flex-col md:flex-row justify-center xs:leading-13 text-[43px] sm:text-5xl md:text-7xl font-semibold font-archivo items-center sm:pt-5 px-4">
+        <motion.section className="absolute flex min-h-screen w-full flex-col items-center justify-center space-x-1 bg-dark px-4 font-archivo text-5xl font-semibold uppercase leading-tight tracking-tighter text-paper sm:pt-5 md:flex-row md:space-x-5 md:text-7xl">
           <motion.div style={isMobile ? {translateY: translate1} : { translateX: translate1 }}>featured</motion.div>
           <motion.div style={isMobile ? {translateY: translate2} : { translateX: translate2 }}>PROJECTS</motion.div>
         </motion.section>
@@ -96,43 +97,59 @@ export function FeaturedProjects() {
             opacity,
             filter,
           }}
-          className="w-full bg-[#F2EFEB] min-h-screen flex flex-col justify-between py-8 md:py-[5vh] items-center overflow-y-auto md:overflow-hidden"
+          className="flex min-h-screen w-full flex-col items-center justify-between overflow-y-auto bg-paper py-8 md:overflow-hidden md:py-12"
         >
           {/* SECTION HEADER IDENTIFIER */}
           <div className="w-[85vw] md:w-[60vw] mx-auto pt-25 md:pt-23 pb-5 flex justify-between items-center">
-            <span className="font-archivo text-xs md:text-sm font-medium tracking-widest text-[#111111]/60 uppercase">
+            <span className="font-archivo text-xs font-medium uppercase tracking-widest text-ink/60 md:text-sm">
               / PROJECTS
             </span>
-               <button className=" space-x-5 hover:  flex items-center justify-around w-20 md:w-30 border border-neutral-500 md:text-sm text-xs rounded-xl p-2 cursor-pointer bg-black text-white transition-all ease-in-out duration-400 hover:bg-transparent hover:text-black">
+               <Link
+                href="/projects"
+                className="flex w-24 items-center justify-around rounded-xl border border-neutral-500 bg-black p-2 text-xs text-white transition-all duration-400 ease-in-out hover:bg-transparent hover:text-black md:w-30 md:text-sm"
+               >
                 View All 
-              <ArrowUpRight size={13} className=""/>
-            </button>
+                <ArrowUpRight size={13} aria-hidden="true" />
+              </Link>
 
           </div>
 
           <div className="flex-1 w-full flex items-center justify-center my-auto px-6">
             <div className="w-[85vw] md:w-[60vw] mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12 md:gap-y-5">
-                {PROJECTS.map((project, index) => (
-                  <div
-                    key={index}
-                    className="space-y-2 cursor-pointer group w-full"
-                  >
-                    <div className="h-[28vh] sm:h-[32vh] md:h-[32vh] overflow-hidden rounded-2xl md:rounded-3xl">
-                      <img
-                        src={project.image}
-                        alt={`${project.title} Project`}
-                        className="h-full w-full object-cover object-top transition duration-300 ease-in-out group-hover:scale-105"
-                      />
-                    </div>
-                    <h3 className="font-archivo text-xl sm:text-2xl md:text-[24px] font-semibold text-[#111111] tracking-tight pt-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-neutral-600 text-sm md:text-[12px] font-normal">
-                      {project.category}
-                    </p>
-                  </div>
-                ))}
+                {FEATURED_PROJECTS.map((project) => {
+                  const thumbnail = project.thumbnail ?? project.image;
+
+                  return (
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      key={project.slug}
+                      className="group w-full cursor-pointer space-y-2"
+                    >
+                      <div className="relative h-[28vh] overflow-hidden rounded-2xl sm:h-[32vh] md:h-[32vh] md:rounded-3xl">
+                        {thumbnail ? (
+                          <Image
+                            src={thumbnail}
+                            alt={`${project.title} project thumbnail`}
+                            fill
+                            sizes="(max-width: 768px) 85vw, 30vw"
+                            className="object-cover transition duration-300 ease-in-out group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="flex h-full items-center justify-center bg-neutral-900 p-6 text-center text-2xl font-semibold text-white">
+                            {project.title}
+                          </div>
+                        )}
+                      </div>
+                      <h3 className="pt-2 font-archivo text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm font-normal text-neutral-600 md:text-xs">
+                        {project.category}
+                      </p>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>

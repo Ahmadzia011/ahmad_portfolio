@@ -1,7 +1,6 @@
-export const SECTIONS = [
+export const SERVICES = [
   {
     id: "01",
-    subTag: "CAPABILITY",
     label: "SaaS Development",
     title: "Full-Stack SaaS Applications",
     description: "Turn your product concept into a market-ready web application. Engineered with secure multi-tenant authentication, automated recurring billing, and scalable database management.",
@@ -9,7 +8,6 @@ export const SECTIONS = [
   },
   {
     id: "02",
-    subTag: "ARCHITECTURE",
     label: "E-Commerce & Web Platforms",
     title: "High-Converting Digital Stores",
     description: "Fast, modern e-commerce experiences and custom web platforms optimized for speed, seamless product discovery, and friction-free checkout workflows.",
@@ -17,7 +15,6 @@ export const SECTIONS = [
   },
   {
     id: "03",
-    subTag: "INTEGRATION",
     label: "RAG Chatbots & AI Agents",
     title: "Intelligent Data & AI Systems",
     description: "Custom RAG chatbots and AI agents trained on your business data. Automate customer support, handle complex queries in real-time, and scrape dynamic web data effortlessly.",
@@ -25,7 +22,6 @@ export const SECTIONS = [
   },
   {
     id: "04",
-    subTag: "AUTOMATION",
     label: "Workflow Automation",
     title: "Automated Backend Pipelines",
     description: "Streamline operations by connecting third-party APIs, automating data synchronization between platforms, and eliminating manual repetitive tasks across your business.",
@@ -34,7 +30,7 @@ export const SECTIONS = [
 ];
 
 
-export  const TESTIMONIALS = [
+export const TESTIMONIALS = [
   {
     id: 1,
     quote:
@@ -63,38 +59,3 @@ export  const TESTIMONIALS = [
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
   },
 ];
-
-export type MessageData = 
-  {
-    name: string,
-    email: string,
-    message: string
-}
-
-
-  export const PROJECTS = [
-    {
-      title: "Damas",
-      category: "Agency Framer Template",
-      image:
-        "https://framerusercontent.com/images/VNXQLcPHw9VbVzy6BDpZ8pUsaU.png?scale-down-to=1024&width=1160&height=800",
-    },
-    {
-      title: "Najm",
-      category: "SaaS Template",
-      image:
-        "https://framerusercontent.com/images/WgEHVRrQs62rgxlzrnXJJ8rr4.png?scale-down-to=1024&width=1160&height=800",
-    },
-    {
-      title: "Kavi",
-      category: "AI Framer Template",
-      image:
-        "https://framerusercontent.com/images/I3azeVtkvdKBGl9TX38tUdXEb0.png?scale-down-to=1024&width=1160&height=800",
-    },
-    {
-      title: "PostWing",
-      category: "Social Media Scheduler",
-      image:
-        "https://framerusercontent.com/images/1C3zqERGdc7pqPIbDxtBaD4VGiQ.png?scale-down-to=1024&width=4096&height=2824",
-    },
-  ];

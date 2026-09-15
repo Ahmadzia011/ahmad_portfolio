@@ -1,190 +1,208 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Send, ExternalLink } from "lucide-react";
+import Link from "next/link";
+import { SITE_EMAIL } from "@/src/constants/site.constants";
 
-import { MessageData } from "@/src/constants/dashboard.constants";
+type ContactForm = {
+  name: string;
+  email: string;
+  message: string;
+};
 
 export default function ContactSection() {
-  const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState<MessageData>({
-    name : '',
-    email: '',
-    message: ''
+  const [isOpeningEmail, setIsOpeningEmail] = useState(false);
+  const [formData, setFormData] = useState<ContactForm>({
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your form submission logic here
-    setSubmitted(true);
-    // setFormData({
-      //   name : '',
-      //   email: '',
-      //   message: ''
-      // })
-      const form = formData
-      form.name = ''
-      form.email = ''
-      form.message = ''
-      setFormData(form)
+    setIsOpeningEmail(true);
 
-    // setTimeout(() => setSubmitted(false), 4000);
+    const subject = encodeURIComponent(`Project enquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}`,
+    );
+
+    window.location.href = `mailto:${SITE_EMAIL}?subject=${subject}&body=${body}`;
+    window.setTimeout(() => setIsOpeningEmail(false), 1500);
   };
 
   return (
-    <section className="min-h-screen w-full py-[15vh] bg-[#101010] text-[#CDCCC8] font-archivo select-none">
-      <div className="max-w-6xl w-full mx-auto px-6 flex flex-col items-center">
-
-
-        {/* 2-COLUMN GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-start">
-
-          {/* LEFT COLUMN: Direct Info & Quick Links */}
+    <section
+      id="contact-section"
+      className="w-full scroll-mt-10 bg-dark py-32 font-archivo text-soft md:py-40"
+    >
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center px-6">
+        <div className="grid w-full grid-cols-1 items-start gap-12 lg:grid-cols-2">
           <div className="flex flex-col space-y-8">
-
-            {/* Status Card */}
-            <div className="bg-[#17181A] border border-[#2A2B2E] rounded-3xl p-8 space-y-6">
-              <h3 className="text-2xl md:text-3xl text-[#F5F4EE] leading-tight">
-                Let's build something extraordinary together.
+            <div className="space-y-6 rounded-3xl border border-panel-border bg-panel p-8">
+              <h3 className="text-2xl leading-tight text-paper md:text-3xl">
+                Let&apos;s build something extraordinary together.
               </h3>
 
-              <p className="text-sm text-[#CDCCC8] leading-relaxed">
-                Focused on delivering high-impact, modern web applications, custom components, and scalable digital solutions.
+              <p className="text-sm leading-relaxed text-soft">
+                Focused on delivering high-impact, modern web applications,
+                custom components, and scalable digital solutions.
               </p>
             </div>
 
-            {/* Direct Contact Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <a
-                href="mailto:ahmadzia.devs@gmail.com"
-                className="group bg-[#17181A] border border-[#2A2B2E] hover:border-neutral-500 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between h-36"
+                href={`mailto:${SITE_EMAIL}`}
+                className="group flex h-36 flex-col justify-between rounded-2xl border border-panel-border bg-panel p-6 transition-colors duration-300 hover:border-neutral-500"
               >
-                <div className="flex justify-between items-center text-[#F5F4EE]">
-                  <Mail className="w-5 h-5" />
-                  <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                <div className="flex items-center justify-between text-paper">
+                  <Mail className="size-5" />
+                  <ArrowUpRight className="size-4 opacity-0 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
                 </div>
                 <div>
-                  <p className="text-xs text-[#CDCCC8]/60 uppercase tracking-wider font-mono">
+                  <p className="font-mono text-xs uppercase tracking-wider text-soft/60">
                     Email
                   </p>
-                  <p className="text-sm font-semibold text-[#F5F4EE] pt-1 truncate">
-                    ahmadzia.devs@gmail.com
-
+                  <p className="truncate pt-1 text-sm font-semibold text-paper">
+                    {SITE_EMAIL}
                   </p>
                 </div>
               </a>
 
-              <div className="bg-[#17181A] border border-[#2A2B2E] rounded-2xl p-6 flex flex-col justify-between h-36">
-                <div className="text-[#F5F4EE]">
-                  <MapPin className="w-5 h-5" />
+              <div className="flex h-36 flex-col justify-between rounded-2xl border border-panel-border bg-panel p-6">
+                <div className="text-paper">
+                  <MapPin className="size-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-[#CDCCC8]/60 uppercase tracking-wider font-mono">
+                  <p className="font-mono text-xs uppercase tracking-wider text-soft/60">
                     Location
                   </p>
-                  <p className="text-sm font-semibold text-[#F5F4EE] pt-1">
+                  <p className="pt-1 text-sm font-semibold text-paper">
                     Remote / Global
                   </p>
                 </div>
               </div>
-
             </div>
 
-            {/* Social Links Bar */}
-            <div className="bg-[#17181A] border border-[#2A2B2E] rounded-2xl p-6 flex md:flex-row flex-col md:items-center justify-between overflow-hidden space-y-3 md:space-y-0">
-              <span className="text-xs font-mono uppercase tracking-wider text-[#CDCCC8]/60">
-                Connect
+            <div className="flex flex-col justify-between gap-3 overflow-hidden rounded-2xl border border-panel-border bg-panel p-6 md:flex-row md:items-center">
+              <span className="font-mono text-xs uppercase tracking-wider text-soft/60">
+                Next step
               </span>
-              <div className="flex space-x-6 text-sm font-semibold text-[#F5F4EE]">
-                {["GitHub", "LinkedIn", "Twitter"].map((network) => (
-                  <a
-                    key={network}
-                    href="#"
-                    className="hover:text-neutral-400 transition-colors flex items-center gap-1 group"
-                  >
-                    <span>{network}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                  </a>
-                ))}
+              <div className="flex gap-6 text-sm font-semibold text-paper">
+                <Link
+                  href="/projects"
+                  className="group flex items-center gap-1 transition-colors hover:text-neutral-400"
+                >
+                  <span>Selected work</span>
+                  <ArrowUpRight className="size-3.5 opacity-60 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
+                </Link>
+                <a
+                  href={`mailto:${SITE_EMAIL}`}
+                  className="group flex items-center gap-1 transition-colors hover:text-neutral-400"
+                >
+                  <span>Email directly</span>
+                  <ExternalLink className="size-3.5 opacity-60 transition-opacity group-hover:opacity-100" />
+                </a>
               </div>
             </div>
-
           </div>
 
-          {/* RIGHT COLUMN: Interactive Form */}
-          <div className="bg-[#17181A] border border-[#2A2B2E] rounded-3xl p-8 md:p-10 shadow-2xl">
-
+          <div className="rounded-3xl border border-panel-border bg-panel p-8 shadow-2xl md:p-10">
             <form onSubmit={handleSubmit} className="space-y-6">
-
-              {/* Name Input */}
               <div className="space-y-2">
-                <label className="text-xs font-mono uppercase tracking-wider text-[#F5F4EE]/80">
+                <label
+                  htmlFor="contact-name"
+                  className="font-mono text-xs uppercase tracking-wider text-paper/80"
+                >
                   Your Name
                 </label>
                 <input
                   type="text"
+                  id="contact-name"
+                  name="name"
+                  autoComplete="name"
                   required
                   placeholder="John Doe"
                   value={formData.name}
-                  onChange={(e) => setFormData((prev) => ({...prev, name:e.target.value}))}
-                  className="w-full bg-[#101010] border border-[#2A2B2E] focus:border-neutral-500 rounded-xl px-4 py-3.5 text-sm text-[#F5F4EE] placeholder-[#CDCCC8]/30 outline-none transition-colors"
+                  onChange={(event) =>
+                    setFormData((current) => ({
+                      ...current,
+                      name: event.target.value,
+                    }))
+                  }
+                  className="w-full rounded-xl border border-panel-border bg-dark px-4 py-3.5 text-sm text-paper outline-none transition-colors placeholder:text-soft/30 focus:border-neutral-500"
                 />
               </div>
 
-              {/* Email Input */}
               <div className="space-y-2">
-                <label className="text-xs font-mono uppercase tracking-wider text-[#F5F4EE]/80">
+                <label
+                  htmlFor="contact-email"
+                  className="font-mono text-xs uppercase tracking-wider text-paper/80"
+                >
                   Email Address
                 </label>
                 <input
                   type="email"
+                  id="contact-email"
+                  name="email"
+                  autoComplete="email"
                   required
                   placeholder="john@example.com"
                   value={formData.email}
-                  onChange={(e) => setFormData((prev) => ({...prev, email:e.target.value}))}
-                  className="w-full bg-[#101010] border border-[#2A2B2E] focus:border-neutral-500 rounded-xl px-4 py-3.5 text-sm text-[#F5F4EE] placeholder-[#CDCCC8]/30 outline-none transition-colors"
+                  onChange={(event) =>
+                    setFormData((current) => ({
+                      ...current,
+                      email: event.target.value,
+                    }))
+                  }
+                  className="w-full rounded-xl border border-panel-border bg-dark px-4 py-3.5 text-sm text-paper outline-none transition-colors placeholder:text-soft/30 focus:border-neutral-500"
                 />
               </div>
 
-              {/* Message Input */}
               <div className="space-y-2">
-                <label className="text-xs font-mono uppercase tracking-wider text-[#F5F4EE]/80">
+                <label
+                  htmlFor="contact-message"
+                  className="font-mono text-xs uppercase tracking-wider text-paper/80"
+                >
                   Message
                 </label>
                 <textarea
                   required
+                  id="contact-message"
+                  name="message"
                   rows={5}
                   placeholder="Tell me about your project or idea..."
                   value={formData.message}
-                  onChange={(e) => setFormData((prev) => ({...prev, message:e.target.value}))}
-                  className="w-full bg-[#101010] border border-[#2A2B2E] focus:border-neutral-500 rounded-xl p-4 text-sm text-[#F5F4EE] placeholder-[#CDCCC8]/30 outline-none transition-colors resize-none"
+                  onChange={(event) =>
+                    setFormData((current) => ({
+                      ...current,
+                      message: event.target.value,
+                    }))
+                  }
+                  className="w-full resize-none rounded-xl border border-panel-border bg-dark p-4 text-sm text-paper outline-none transition-colors placeholder:text-soft/30 focus:border-neutral-500"
                 />
               </div>
 
-              {/* Submit Button matching your navigation controls */}
+              <p className="text-xs leading-relaxed text-soft/55">
+                Submitting opens your email app with this message prepared.
+                Nothing is sent without your confirmation.
+              </p>
+
               <button
                 type="submit"
-                className="w-full bg-[#E0E0E0] text-neutral-900 hover:bg-neutral-300 active:scale-[0.98] transition-all duration-200 rounded-xl py-4 font-semibold text-sm flex justify-center items-center space-x-2 cursor-pointer shadow-sm"
+                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-neutral-200 py-4 text-sm font-semibold text-neutral-900 shadow-sm transition-all duration-200 hover:bg-neutral-300 active:scale-95"
               >
-                {submitted ? (
-                  <>
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>Message Sent!</span>
-                  </>
+                {isOpeningEmail ? (
+                  <span>Opening email app…</span>
                 ) : (
                   <>
-                    <span>Send Message</span>
-                    <Send className="w-4 h-4" />
+                    <span>Prepare Email</span>
+                    <Send className="size-4" />
                   </>
                 )}
               </button>
-
             </form>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );

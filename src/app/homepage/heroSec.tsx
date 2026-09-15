@@ -1,9 +1,9 @@
 
 import { useMediaQuery } from "@/src/lib/mediaQuery";
-import { Button } from "@base-ui/react/button";
-import { useScroll, useTransform, motion, useMotionValueEvent, useMotionValue, easeInOut, color, useSpring } from "framer-motion";
-import { ArrowUpRight, Circle } from "lucide-react";
+import { useScroll, useTransform, motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function HeroSec() {
   const containerRef = useRef(null);
@@ -15,10 +15,6 @@ export default function HeroSec() {
     target: containerRef,
     offset: ["start end", "end end"],
   });
-
-  const smoothScroll = useSpring(scrollYProgress, {
-    restDelta: 0.001
-  })
 
   // Map scroll progress to a scale value, making the element grow as the user scrolls.
   const scale = useTransform(scrollYProgress, [0, 1], [1, isMobile ? 1.5 : 1.7]);
@@ -33,7 +29,9 @@ export default function HeroSec() {
       >
         <motion.img
           src={"/3dIcon.avif"}
-          className="z-10 absolute h-20 md:h-40 left-70 top-50 md:top-60 cursor-pointer"
+          alt=""
+          aria-hidden="true"
+          className="z-10 absolute h-20 md:h-40 left-8 md:left-70 top-50 md:top-60 cursor-pointer"
           drag
           dragConstraints={constraintsRef}
           animate={{
@@ -49,7 +47,9 @@ export default function HeroSec() {
         ></motion.img>
         <motion.img
           src={"/3dIcon2.avif"}
-          className="z-10 h-20 md:h-40 absolute right-70 md:bottom-70 bottom-125 rotate-20 cursor-pointer"
+          alt=""
+          aria-hidden="true"
+          className="z-10 h-20 md:h-40 absolute right-8 md:right-70 md:bottom-70 bottom-125 rotate-20 cursor-pointer"
           drag
           dragConstraints={constraintsRef}
           animate={{
@@ -65,19 +65,17 @@ export default function HeroSec() {
         ></motion.img>
         <div className="overflow-hidden">
 
-          <div
-           className="w-full md:w-full pointer-events-none uppercase">
-            <h1
-             className="font-extrabold text-[#111111] text-5xl md:text-[178px] leading-[0.95]">full stack developer</h1>            
-
-
+          <div className="pointer-events-none w-full uppercase">
+            <h1 className="text-5xl font-extrabold leading-none text-ink md:text-[178px]">
+              full stack developer
+            </h1>
           </div>
         </div>
         <div className="w-full px-[12%] md:min-h-[32vh] md:w-[60vw] flex justify-center items-center md:justify-between md:items-end md:px-2 pt-5">
-          <div className="font-archivo font-bold text-[#111111] text-2xl md:text-5xl leading-none tracking-tight normal-case">
+          <div className="font-archivo text-2xl font-bold leading-none tracking-tight text-ink md:text-5xl">
             ©2026
           </div>
-          <div className="font-mono text-end text-xs md:text-sm uppercase md:tracking-widest text-[#111111]/70 pl-10 md:pl-0">
+          <div className="pl-10 text-end font-mono text-xs uppercase text-ink/70 md:pl-0 md:text-sm md:tracking-widest">
             / BUILDING HIGH-IMPACT WEB EXPERIENCES
           </div>
         </div>
@@ -85,11 +83,11 @@ export default function HeroSec() {
 
       <section
         ref={containerRef}
-        className="xs:min-h-[90vh] md:min-h-[120vh] flex justify-center"
+        className="flex min-h-[90vh] justify-center md:min-h-[120vh]"
       >
         <div className="hidden w-[25vw] pt-50 md:flex items-center"> {/*Hidden on mobile view*/}
-          <div className="wrap-normal w-[20vw] space-y-30 pr-5">
-            <h1 className="font-archivo font-bold text-[#111111] text-3xl md:text-4xl leading-tight tracking-tight normal-case">
+          <div className="w-[20vw] space-y-30 pr-5">
+            <h1 className="font-archivo text-3xl font-bold leading-tight tracking-tight text-ink md:text-4xl">
               Engineered for Growth.
             </h1>
             <p className="font-sans md:text-[17px] md:font-light text-neutral-600 text-base leading-relaxed space-y-4">
@@ -98,7 +96,7 @@ export default function HeroSec() {
           </div>
         </div>
         <div className=""> {/* this is too avoid the sticky parent have a flex postioned parent */}
-          <div className="sticky top-210 md:top-250 xs:-translate-y-110 sm:-translate-y-125 md:-translate-y-95"> {/* Center Image  */}
+          <div className="sticky top-210 -translate-y-110 sm:-translate-y-125 md:top-250 md:-translate-y-95"> {/* Center Image  */}
             <motion.div
               className=" h-60 w-50 perspective-[1000px]"
               style={{
@@ -111,15 +109,20 @@ export default function HeroSec() {
                 }}
                 className="relative h-full w-full rounded-xl transform-3d"
               >
-                <img
+                <Image
                   src="/headshot.jpeg"
-                  alt="Front"
+                  alt="Portrait of Ahmad"
+                  fill
+                  unoptimized
                   className="h-full w-full rounded-xl object-cover"
                 />
                 <div className="absolute inset-0 h-full w-full backface-hidden rotate-y-180">
-                  <img
+                  <Image
                     src={"/headshot.jpeg"}
-                    alt="Back"
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    unoptimized
                     className=" h-full w-full rounded-xl object-cover "
                   />
                 </div>
@@ -127,14 +130,14 @@ export default function HeroSec() {
             </motion.div>
           </div>
         </div>
-        <div className="md:hidden absolute xs:pt-75 sm:pt-110 xs:px-8 sm:px-9 space-y-8 ">
+        <div className="absolute space-y-8 px-8 pt-75 sm:px-9 sm:pt-110 md:hidden">
           <p>Modern products require seamless execution. From full-stack Next.js applications and secure database backends to intelligent RAG chatbots, every system is crafted with clean architecture and zero technical bloat.<br /><br />
-            Focus stays on speed, reliability, and business outcomes—delivering scalable digital products that keep your launch on schedule and optimized for conversions.
+            Focus stays on speed, reliability, and business outcomes | delivering scalable digital products that keep your launch on schedule and optimized for conversions.
           </p>
-          <button className=" md:hidden flex items-center justify-around w-35 border border-neutral-500 text-sm rounded-xl p-2 cursor-pointer bg-black text-white transition-all ease-in-out duration-400 hover:bg-transparent hover:text-black">
-            Let's connect
+          <a href="#contact-section" className=" md:hidden flex items-center justify-around w-35 border border-neutral-500 text-sm rounded-xl p-2 cursor-pointer bg-black text-white transition-all ease-in-out duration-400 hover:bg-transparent hover:text-black">
+            Let&apos;s connect
             <ArrowUpRight size={20} className="" />
-          </button>
+          </a>
         </div>
 
         <div id="hero-section" className="hidden w-[23vw] pt-51 md:flex items-center space-y-100 font-light text-lg"> {/*Hidden on mobile view*/}
@@ -143,12 +146,12 @@ export default function HeroSec() {
               Modern products require seamless execution. From full-stack Next.js applications and secure database backends to intelligent RAG chatbots, every system is crafted with clean architecture and zero technical bloat.
               <br />
               <br />
-              Focus stays on speed, reliability, and business outcomes—delivering scalable digital products that keep your launch on schedule and optimized for conversions.
+              Focus stays on speed, reliability, and business outcomes | delivering scalable digital products that keep your launch on schedule and optimized for conversions.
             </p>
-            <button className="flex items-center justify-around w-33 border border-neutral-500 text-sm rounded-xl p-2 cursor-pointer bg-black text-white transition-all ease-in-out duration-400 hover:bg-transparent hover:text-black">
-              Let's connect
+            <a href="#contact-section" className="flex items-center justify-around w-33 border border-neutral-500 text-sm rounded-xl p-2 cursor-pointer bg-black text-white transition-all ease-in-out duration-400 hover:bg-transparent hover:text-black">
+              Let&apos;s connect
               <ArrowUpRight size={17} />
-            </button>
+            </a>
           </div>
         </div>
       </section>
