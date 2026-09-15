@@ -44,13 +44,13 @@ export default function RootLayout({
         <LenisScroll />
         {children}
         <Script
-          src="https://scrapcher.vercel.app/api/widget"
-          data-chatbot-id="505e7c119865e387e66e214a92b97af7d212f0ef1556d16b36a2462f579ad6b6"
-          data-name="Assistant"
-          data-accent="#78AEFF"
-          data-background="#f8fafc"
-          data-panel="#ffffff"
-          data-text="#0f172a"
+           src="https://scrapcher.vercel.app/api/widget" 
+            data-chatbot-id="62922f395cd5a790b879b04d3a4ee595cb60e39d89945cf84ffb7ecbe57c9ad9"
+            data-name="Ahmad's Assistant"
+            data-accent="#181818"
+            data-background="#f8fafc"
+            data-panel="#ffffff"
+            data-text="#0f172a"
           strategy="afterInteractive"
         />
       </body>
