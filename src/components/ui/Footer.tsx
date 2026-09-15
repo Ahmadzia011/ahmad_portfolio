@@ -6,7 +6,7 @@ import { FOOTER_LINKS } from "@/src/constants/site.constants";
 
 export default function Footer() {
   return (
-    <footer className="relative flex min-h-[25vh] w-full flex-col justify-between overflow-hidden bg-dark pt-12 text-paper md:h-[55vh] md:min-h-0 md:pt-0">
+    <footer className="relative flex min-h-[25vh] w-full flex-col justify-between overflow-hidden bg-dark pt-12 text-paper md:h-[55vh] md:min-h-0 md:pt-30">
       <div className="mx-auto flex h-full w-[88vw] flex-col justify-between md:w-[60vw]">
         <div className="my-auto flex h-auto flex-col items-start justify-between gap-10 text-paper md:h-1/2 md:flex-row md:items-center md:gap-0">
           <div className="w-full font-archivo text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:w-1/2 md:pr-12 md:text-[52px] md:leading-none">

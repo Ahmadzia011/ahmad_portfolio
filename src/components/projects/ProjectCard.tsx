@@ -26,7 +26,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
               fill
               priority={priority}
               sizes="(max-width: 768px) 92vw, 45vw"
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105"
+              className="object- transition-transform duration-700 ease-out group-hover:scale-105 group-focus-visible:scale-105"
             />
           ) : (
             <div className="flex h-full items-center justify-center bg-neutral-900 p-8 text-center text-3xl font-semibold text-white">

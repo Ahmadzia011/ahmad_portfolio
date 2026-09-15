@@ -3,7 +3,6 @@ import {
   ArrowUpRight,
   ExternalLink,
   Mail,
-  MapPin,
   MessageCircle,
   Send,
 } from "lucide-react";
