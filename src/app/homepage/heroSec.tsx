@@ -96,7 +96,7 @@ export default function HeroSec() {
           </div>
         </div>
         <div className=""> {/* this is too avoid the sticky parent have a flex postioned parent */}
-          <div className="sticky top-210 -translate-y-110 sm:-translate-y-125 md:top-250 md:-translate-y-95"> {/* Center Image  */}
+          <div className="sticky top-180 -translate-y-110 sm:-translate-y-125 md:top-200 md:-translate-y-95"> {/* Center Image  */}
             <motion.div
               className=" h-60 w-50 perspective-[1000px]"
               style={{

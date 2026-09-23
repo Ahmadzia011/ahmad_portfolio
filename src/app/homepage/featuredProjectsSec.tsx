@@ -32,9 +32,9 @@ export function FeaturedProjects() {
   const RANGE = isMobile ? [0.2, 0.3, 0.4, 0.8] : [0.1, 0.2, 0.3, 0.8];
 
   const topInset = useTransform(smoothProgress, RANGE, [
-    isMobile ? "26%" : "45%",
-    isMobile ? "26%" : "45%",
-    isMobile ? "26%" : "45%",
+    isMobile ? "26%" : "46.1%",
+    isMobile ? "26%" : "46.1%",
+    isMobile ? "26%" : "46.1%",
     "-60%",
   ]);
 
@@ -83,7 +83,7 @@ export function FeaturedProjects() {
       ref={projectsContainer}
       className="relative min-h-[260vh] mask-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.2)_15%,rgba(0,0,0,0.7)_35%,black_60%)] "
     >
-      <div className="sticky top-10 min-h-screen overflow-hidden">
+      <div className="hidden md:block sticky top-10 min-h-screen overflow-hidden">
         {/* Background Revealed Text */}
         <motion.section className="absolute flex min-h-screen w-full flex-col items-center justify-center space-x-1 bg-dark px-4 font-archivo text-5xl font-semibold uppercase leading-tight tracking-tighter text-paper sm:pt-5 md:flex-row md:space-x-5 md:text-7xl">
           <motion.div style={isMobile ? {translateY: translate1} : { translateX: translate1 }}>featured</motion.div>
